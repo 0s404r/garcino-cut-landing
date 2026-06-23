@@ -132,6 +132,24 @@ footer p{opacity:.8;font-size:.9rem}
   body{padding-bottom:70px}
 }
 </style>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1834239787536816');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1834239787536816&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 </head>
 <body>
 
@@ -292,8 +310,53 @@ footer p{opacity:.8;font-size:.9rem}
 
 <script>
 // ====== الربط بجوجل شيت ======
-// ضع هنا رابط الـ Web App الخاص بـ Google Apps Script بعد نشره
 const SHEET_ENDPOINT = "https://script.google.com/macros/s/AKfycbwDsdDAOf4T6ljfC0XZ3gio_0KQPJg4FqvEeyBNORb9zpm-JlvCU_vMe1sp_WuN5ECz/exec";
+
+// ====== Meta Pixel & Conversions API Config ======
+const PIXEL_ID = '1834239787536816';
+const CAPI_TOKEN = 'YOUR_CAPI_ACCESS_TOKEN';
+
+async function sendCAPIEvent(eventName, eventData) {
+  const payload = {
+    data: [{
+      event_name: eventName,
+      event_time: Math.floor(Date.now() / 1000),
+      event_source_url: window.location.href,
+      action_source: 'website',
+      user_data: { client_user_agent: navigator.userAgent },
+      custom_data: eventData
+    }],
+    access_token: CAPI_TOKEN
+  };
+  try {
+    await fetch('https://graph.facebook.com/v19.0/' + PIXEL_ID + '/events', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+  } catch(err) { console.warn('CAPI error:', err); }
+}
+
+window.addEventListener('load', function() {
+  if (typeof fbq !== 'undefined') {
+    fbq('track', 'ViewContent', {
+      content_name: 'Garcino Cut',
+      content_category: 'Weight Loss Supplement',
+      content_ids: ['garcino-cut'],
+      content_type: 'product',
+      currency: 'EGP',
+      value: 900
+    });
+  }
+  sendCAPIEvent('ViewContent', {
+    content_name: 'Garcino Cut',
+    content_category: 'Weight Loss Supplement',
+    content_ids: ['garcino-cut'],
+    content_type: 'product',
+    currency: 'EGP',
+    value: 900
+  });
+});
 
 const prices = {1:600, 2:900};
 function selectPkg(p){ document.getElementById('pkgSelect').value = p; updateSummary(); }
@@ -309,13 +372,14 @@ document.getElementById('orderForm').addEventListener('submit', async function(e
   const msg = document.getElementById('formMsg');
   const f = e.target;
   const pkg = f.package.value;
+  const orderValue = prices[pkg];
   const data = {
     name: f.name.value,
     phone: f.phone.value,
     governorate: f.governorate.value,
     address: f.address.value,
     package: pkg == 2 ? "علبتين" : "علبة واحدة",
-    total: prices[pkg] + " جنيه",
+    total: orderValue + " جنيه",
     date: new Date().toLocaleString('ar-EG')
   };
   btn.disabled = true; btn.textContent = "جاري الإرسال...";
@@ -329,6 +393,26 @@ document.getElementById('orderForm').addEventListener('submit', async function(e
     msg.textContent = "✅ تم استلام طلبك بنجاح! هنتواصل معاك قريباً لتأكيد الطلب.";
     msg.className = "form-msg ok";
     f.reset(); updateSummary();
+
+    if (typeof fbq !== 'undefined') {
+      fbq('track', 'Purchase', {
+        content_name: 'Garcino Cut',
+        content_ids: ['garcino-cut'],
+        content_type: 'product',
+        num_items: parseInt(pkg),
+        currency: 'EGP',
+        value: orderValue
+      });
+    }
+    sendCAPIEvent('Purchase', {
+      content_name: 'Garcino Cut',
+      content_ids: ['garcino-cut'],
+      content_type: 'product',
+      num_items: parseInt(pkg),
+      currency: 'EGP',
+      value: orderValue
+    });
+
   }catch(err){
     msg.textContent = "⚠️ حصل خطأ، برجاء المحاولة مرة أخرى أو التواصل معنا.";
     msg.className = "form-msg err";
