@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>شكراً لطلبك | جارسينو كت Garcino Cut</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+--green:#2e7d32; --green-dark:#1b5e20; --green-light:#4caf50;
+--accent:#cddc39; --gold:#c9a227; --dark:#0e1a12; --bg:#f3f7f2; --white:#fff;
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Cairo',sans-serif}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:#1f2a22;line-height:1.8;min-height:100vh;display:flex;flex-direction:column}
+.container{max-width:760px;margin:0 auto;padding:0 18px;width:100%}
+a{text-decoration:none}
+.topbar{background:var(--green-dark);color:#fff;text-align:center;padding:9px;font-weight:700;font-size:.95rem}
+.topbar span{color:var(--accent)}
+.ty-hero{background:linear-gradient(135deg,#0e1a12,#1b5e20 60%,#2e7d32);color:#fff;padding:70px 0 90px;position:relative;overflow:hidden;text-align:center}
+.ty-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(76,175,80,.35),transparent 55%)}
+.ty-hero .container{position:relative;z-index:2}
+.check-wrap{width:120px;height:120px;margin:0 auto 26px;border-radius:50%;background:rgba(205,220,57,.15);border:3px solid var(--accent);display:flex;align-items:center;justify-content:center;animation:pop .6s ease both}
+.check-wrap svg{width:62px;height:62px}
+.check-wrap svg path{stroke:var(--accent);stroke-width:6;fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:100;stroke-dashoffset:100;animation:draw .8s .35s ease forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes pop{0%{transform:scale(0);opacity:0}70%{transform:scale(1.12)}100%{transform:scale(1);opacity:1}}
+.ty-hero h1{font-size:2.6rem;font-weight:900;margin-bottom:14px;line-height:1.3}
+.ty-hero h1 .hl{color:var(--accent)}
+.ty-hero p{font-size:1.25rem;opacity:.95;max-width:560px;margin:0 auto}
+.order-no{display:inline-block;margin-top:24px;background:rgba(205,220,57,.18);border:1px solid var(--accent);color:var(--accent);padding:10px 26px;border-radius:30px;font-weight:800;font-size:1.05rem}
+.order-no b{color:#fff}
+.card{background:#fff;border-radius:22px;box-shadow:0 18px 50px rgba(27,94,32,.12);padding:36px 30px;margin-top:-50px;position:relative;z-index:3}
+.sec-title{text-align:center;font-size:1.7rem;font-weight:900;color:var(--green-dark);margin-bottom:8px}
+.sec-sub{text-align:center;color:#5a6b5e;margin-bottom:30px}
+.steps{display:grid;gap:16px}
+.step{display:flex;align-items:flex-start;gap:16px;background:#f0f6ee;border-radius:14px;padding:18px 20px;border-right:4px solid var(--green-light)}
+.step .ic{font-size:1.8rem;line-height:1.2;flex-shrink:0}
+.step h3{color:var(--green-dark);font-size:1.15rem;font-weight:800;margin-bottom:2px}
+.step p{color:#5a6b5e;font-size:.98rem;margin:0}
+.trust{display:flex;justify-content:space-around;flex-wrap:wrap;gap:16px;text-align:center;margin-top:30px;padding-top:26px;border-top:1px solid #e4ece2}
+.trust .item{flex:1;min-width:130px}
+.trust .ic{font-size:1.9rem}
+.trust .t{font-weight:800;color:var(--green-dark);margin-top:4px;font-size:.98rem}
+.trust .s{font-size:.8rem;color:#5a6b5e}
+.btns{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:32px}
+.btn{display:inline-flex;align-items:center;gap:9px;background:linear-gradient(135deg,var(--green-light),var(--green-dark));color:#fff;padding:15px 34px;border-radius:50px;font-size:1.1rem;font-weight:800;box-shadow:0 10px 25px rgba(46,125,50,.4);transition:transform .25s,box-shadow .25s}
+.btn:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 15px 35px rgba(46,125,50,.55)}
+.btn svg{width:22px;height:22px;flex-shrink:0}
+.btn.wa{background:linear-gradient(135deg,#25d366,#128c4a);box-shadow:0 10px 25px rgba(18,140,74,.4)}
+.btn.ghost{background:#fff;color:var(--green-dark);border:2px solid var(--green-light);box-shadow:none}
+.btn.ghost:hover{background:#f0f6ee}
+.note{text-align:center;color:#5a6b5e;font-size:.95rem;margin-top:26px;background:#fffbe6;border:1px dashed var(--gold);border-radius:12px;padding:14px 18px}
+.wa-float{position:fixed;bottom:22px;left:22px;width:60px;height:60px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(18,140,74,.5);z-index:99;animation:waPulse 2s infinite}
+.wa-float svg{width:34px;height:34px}
+@keyframes waPulse{0%{box-shadow:0 8px 24px rgba(18,140,74,.5)}50%{box-shadow:0 8px 34px rgba(37,211,102,.9)}100%{box-shadow:0 8px 24px rgba(18,140,74,.5)}}
+footer{background:var(--dark);color:#cfe0d2;text-align:center;padding:30px 0;margin-top:50px}
+footer .logo{font-size:1.3rem;font-weight:900;color:var(--accent);margin-bottom:8px}
+footer p{opacity:.8;font-size:.88rem}
+@media(max-width:768px){
+.ty-hero h1{font-size:1.9rem}
+.ty-hero p{font-size:1.1rem}
+.check-wrap{width:100px;height:100px}
+.card{padding:28px 20px}
+}
+</style>
+</head>
+<body>
+<div class="topbar">🎉 تم استلام طلبك بنجاح — <span>الدفع عند الاستلام</span> وشحن مجاني لكل المحافظات 🚚</div>
+<header class="ty-hero">
+<div class="container">
+<div class="check-wrap">
+<svg viewBox="0 0 100 100"><path d="M25 52 L43 70 L77 32"/></svg>
+</div>
+<h1>شكراً لطلبك! <span class="hl">🌿</span></h1>
+<p>تم استلام طلبك من <b>جارسينو كت</b> بنجاح. فريقنا هيتواصل معاك في أقرب وقت لتأكيد الأوردر والعنوان.</p>
+<div class="order-no">رقم طلبك: <b id="orderNo">#GC-000000</b></div>
+</div>
+</header>
+<div class="container">
+<div class="card">
+<h2 class="sec-title">إيه اللي هيحصل بعد كده؟</h2>
+<p class="sec-sub">طلبك دخل عندنا، وخطواتك القادمة بسيطة جداً</p>
+<div class="steps">
+<div class="step">
+<div class="ic">📞</div>
+<div><h3>هنكلّمك</h3><p>مندوب خدمة العملاء هيتصل بيك خلال 24 ساعة لتأكيد بياناتك وعنوانك.</p></div>
+</div>
+<div class="step">
+<div class="ic">📦</div>
+<div><h3>تجهيز وشحن الطلب</h3><p>بعد التأكيد بنجهّز طلبك ونشحنه مجاناً لحد باب بيتك.</p></div>
+</div>
+<div class="step">
+<div class="ic">💵</div>
+<div><h3>الدفع عند الاستلام</h3><p>تستلم جارسينو كت وتدفع كاش وانت مطمن — من غير أي مقدمات.</p></div>
+</div>
+<div class="step">
+<div class="ic">🌿</div>
+<div><h3>ابدأ رحلتك للوزن المثالي</h3><p>كبسولة واحدة يومياً على الريق، وهتبدأ تشوف النتيجة من أول أسبوع.</p></div>
+</div>
+</div>
+<div class="trust">
+<div class="item"><div class="ic">🛡️</div><div class="t">مرخص ومصرّح</div><div class="s">هيئة سلامة الغذاء المصرية</div></div>
+<div class="item"><div class="ic">🚚</div><div class="t">شحن مجاني</div><div class="s">لكل المحافظات</div></div>
+<div class="item"><div class="ic">🌿</div><div class="t">طبيعي 100%</div><div class="s">أعشاب آمنة</div></div>
+</div>
+<div class="btns">
+<a href="https://wa.me/201104353630?text=عايز%20أتأكد%20من%20طلبي%20في%20جارسينو%20كت" class="btn wa" target="_blank">
+<svg viewBox="0 0 32 32" fill="#fff"><path d="M16 .4C7.4.4.4 7.4.4 16c0 2.8.7 5.5 2.1 7.9L.3 31.6l7.9-2.1c2.3 1.3 4.9 1.9 7.6 1.9h.1c8.6 0 15.6-7 15.6-15.6S24.6.4 16 .4zm0 28.5c-2.4 0-4.7-.6-6.7-1.8l-.5-.3-4.7 1.2 1.3-4.6-.3-.5c-1.3-2.1-2-4.5-2-7 0-7.1 5.8-12.9 12.9-12.9 3.4 0 6.7 1.3 9.1 3.8 2.4 2.4 3.8 5.7 3.8 9.1-.1 7.1-5.9 12.9-13 12.9zm7.1-9.6c-.4-.2-2.3-1.1-2.6-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.2 1.5-.2.2-.4.3-.8.1-.4-.2-1.6-.6-3.1-1.9-1.1-1-1.9-2.3-2.1-2.7-.2-.4 0-.6.2-.8.2-.2.4-.4.6-.7.2-.2.3-.4.4-.7.1-.3.1-.5 0-.7-.1-.2-.9-2.2-1.3-3-.3-.8-.7-.7-.9-.7h-.8c-.3 0-.7.1-1.1.5-.4.4-1.5 1.4-1.5 3.5s1.5 4.1 1.7 4.3c.2.3 3 4.6 7.3 6.4 1 .4 1.8.7 2.4.9 1 .3 1.9.3 2.7.2.8-.1 2.3-1 2.7-1.9.3-.9.3-1.7.2-1.9-.1-.2-.3-.3-.7-.5z"/></svg>
+تواصل واتساب
+</a>
+<a href="index.html" class="btn ghost">🏠 الرجوع للصفحة الرئيسية</a>
+</div>
+<p class="note">📌 لو حابب تأكد الطلب بسرعة أو عندك أي استفسار، كلّمنا على واتساب وهنردّ عليك فوراً.</p>
+</div>
+</div>
+<footer>
+<div class="logo">🌿 جارسينو كت | Garcino Cut</div>
+<p>مركز الجسم المثالي — حصري منتج التخسيس الأول | مكوّن من أعشاب طبيعية 100%</p>
+<p>© 2026 جميع الحقوق محفوظة</p>
+</footer>
+<a href="https://wa.me/201104353630?text=عايز%20أتأكد%20من%20طلبي%20في%20جارسينو%20كت" class="wa-float" target="_blank" aria-label="واتساب">
+<svg viewBox="0 0 32 32" fill="#fff"><path d="M16 .4C7.4.4.4 7.4.4 16c0 2.8.7 5.5 2.1 7.9L.3 31.6l7.9-2.1c2.3 1.3 4.9 1.9 7.6 1.9h.1c8.6 0 15.6-7 15.6-15.6S24.6.4 16 .4zm0 28.5c-2.4 0-4.7-.6-6.7-1.8l-.5-.3-4.7 1.2 1.3-4.6-.3-.5c-1.3-2.1-2-4.5-2-7 0-7.1 5.8-12.9 12.9-12.9 3.4 0 6.7 1.3 9.1 3.8 2.4 2.4 3.8 5.7 3.8 9.1-.1 7.1-5.9 12.9-13 12.9zm7.1-9.6c-.4-.2-2.3-1.1-2.6-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.2 1.5-.2.2-.4.3-.8.1-.4-.2-1.6-.6-3.1-1.9-1.1-1-1.9-2.3-2.1-2.7-.2-.4 0-.6.2-.8.2-.2.4-.4.6-.7.2-.2.3-.4.4-.7.1-.3.1-.5 0-.7-.1-.2-.9-2.2-1.3-3-.3-.8-.7-.7-.9-.7h-.8c-.3 0-.7.1-1.1.5-.4.4-1.5 1.4-1.5 3.5s1.5 4.1 1.7 4.3c.2.3 3 4.6 7.3 6.4 1 .4 1.8.7 2.4.9 1 .3 1.9.3 2.7.2.8-.1 2.3-1 2.7-1.9.3-.9.3-1.7.2-1.9-.1-.2-.3-.3-.7-.5z"/></svg>
+</a>
+<script>
+(function(){
+  var n = Math.floor(100000 + Math.random() * 900000);
+  document.getElementById('orderNo').textContent = '#GC-' + n;
+})();
+</script>
+</body>
+</html>
