@@ -35,7 +35,7 @@ img{max-width:100%;display:block}
 .hero-text h1 .hl{color:var(--accent)}
 .hero-text p{font-size:1.25rem;opacity:.95;margin-bottom:28px}
 .hero-img{flex:1;min-width:300px;text-align:center}
-.hero-img img{border-radius:20px;box-shadow:0 25px 60px rgba(0,0,0,.5);max-height:460px;margin:0 auto}
+.hero-img img{border-radius:20px;box-shadow:0 25px 60px rgba(0,0,0,.5);width:100%;max-width:430px;height:460px;object-fit:cover;object-position:49.5% center;margin:0 auto;background:#0e1a12}
 .hero-stats{display:flex;gap:24px;margin-top:26px;flex-wrap:wrap}
 .hero-stats div{text-align:center}
 .hero-stats .num{font-size:2rem;font-weight:900;color:var(--accent)}
@@ -125,6 +125,7 @@ footer p{opacity:.8;font-size:.9rem}
 .sticky-cta .btn{animation:none;padding:12px 36px;font-size:1.1rem}
 
 @media(max-width:768px){
+  .hero-img img{max-width:340px;height:400px}
   .hero-text h1{font-size:2rem}
   .price-card.best{transform:scale(1)}
   .sec-title{font-size:1.6rem}
