@@ -331,6 +331,7 @@ updateSummary();
 
 document.getElementById('orderForm').addEventListener('submit', async function(e){
   e.preventDefault();
+  if(typeof fbq !== 'undefined') fbq('track', 'Purchase');
   const btn = document.getElementById('submitBtn');
   const msg = document.getElementById('formMsg');
   const f = e.target;
@@ -355,9 +356,7 @@ document.getElementById('orderForm').addEventListener('submit', async function(e
     });
     msg.textContent = "✅ تم استلام طلبك بنجاح! هنتواصل معاك قريباً لتأكيد الطلب.";
     msg.className = "form-msg ok";
-    f.reset(); updateSummary();
-    fbq('track', 'Purchase');
-setTimeout(function(){ window.location.href = "thank-you.html"; }, 1500);
+    f.reset(); updateSummary();setTimeout(function(){ window.location.href = "thank-you.html"; }, 1500);
 
 
 
