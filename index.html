@@ -321,28 +321,6 @@ const SHEET_ENDPOINT = "https://script.google.com/macros/s/AKfycbwDsdDAOf4T6ljfC
 
 // ====== Meta Pixel & Conversions API Config ======
 const PIXEL_ID = '1834239787536816';
-const CAPI_TOKEN = 'YOUR_CAPI_ACCESS_TOKEN';
-
-async function sendCAPIEvent(eventName, eventData) {
-  const payload = {
-    data: [{
-      event_name: eventName,
-      event_time: Math.floor(Date.now() / 1000),
-      event_source_url: window.location.href,
-      action_source: 'website',
-      user_data: { client_user_agent: navigator.userAgent },
-      custom_data: eventData
-    }],
-    access_token: CAPI_TOKEN
-  };
-  try {
-    await fetch('https://graph.facebook.com/v19.0/' + PIXEL_ID + '/events', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
-  } catch(err) { console.warn('CAPI error:', err); }
-}
 
 window.addEventListener('load', function() {
   if (typeof fbq !== 'undefined') {
@@ -355,14 +333,6 @@ window.addEventListener('load', function() {
       value: 900
     });
   }
-  sendCAPIEvent('ViewContent', {
-    content_name: 'Garcino Cut',
-    content_category: 'Weight Loss Supplement',
-    content_ids: ['garcino-cut'],
-    content_type: 'product',
-    currency: 'EGP',
-    value: 900
-  });
 });
 
 const prices = {1:600, 2:900};
@@ -412,14 +382,6 @@ setTimeout(function(){ window.location.href = "thank-you.html"; }, 1500);
         value: orderValue
       });
     }
-    sendCAPIEvent('Purchase', {
-      content_name: 'Garcino Cut',
-      content_ids: ['garcino-cut'],
-      content_type: 'product',
-      num_items: parseInt(pkg),
-      currency: 'EGP',
-      value: orderValue
-    });
 
   }catch(err){
     msg.textContent = "⚠️ حصل خطأ، برجاء المحاولة مرة أخرى أو التواصل معنا.";
