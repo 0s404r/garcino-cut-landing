@@ -331,7 +331,7 @@ updateSummary();
 
 document.getElementById('orderForm').addEventListener('submit', async function(e){
   e.preventDefault();
-  if(typeof fbq !== 'undefined') fbq('track', 'Purchase');
+  if(typeof fbq !== 'undefined'){var _pkg=parseInt(document.getElementById('pkgSelect').value)||2;var _prices={1:600,2:900};fbq('track','Purchase',{value:_prices[_pkg]||900,currency:'EGP'});}
   const btn = document.getElementById('submitBtn');
   const msg = document.getElementById('formMsg');
   const f = e.target;
